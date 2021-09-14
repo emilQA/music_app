@@ -1,9 +1,17 @@
 import React from "react";
 
 const LibrarySong = (props) => {
-    console.log(props)
+    // console.log(props)
+    const songSelectHandler = () => {
+        // const selectedSong = props.songs.filter((state) => state.id === props.id)
+        // props.setCurrentSong(song)
+
+        //OR
+
+        props.setCurrentSong(props.song)
+    }
     return (
-        <div className='library-song'>
+        <div onClick={songSelectHandler} className='library-song'>
             <img src={props.song.cover} alt={props.song.name}/>
             <div className="library-song-description">
                 <h3>{props.song.name}</h3>

@@ -4,9 +4,11 @@
   left: 0;
   width: 20rem;
   height: 100%;
-  //background: rgb(88, 95, 95);
-  //box-shadow: 2px 2px 50px rgb(204, 204, 204);
   overflow: scroll;
+
+  h2 {
+    padding: 1rem 2rem;
+  }
 
   &-song {
     display: flex;
@@ -25,11 +27,14 @@
     &-description {
       padding-left: 1rem;
 
+
       h3 {
+        padding: 3px;
         font-size: 1rem;
       }
 
       h4 {
+        padding: 3px;
         font-size: 0.7rem;
       }
     }
@@ -37,7 +42,21 @@
   }
 }
 
-*{
-  scrollbar-width:thin;
-  scrollbar-color:rgba(155,155,155,0.5);
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 20px;
+  border: transparent;
 }
