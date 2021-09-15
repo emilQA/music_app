@@ -6,7 +6,7 @@ function chillHop() {
             name: "KING, SCAR",
             cover: "https://i1.sndcdn.com/artworks-000245771159-1349sb-t500x500.jpg",
             artist: "scarlxrd",
-            audio: "https://dl2.mp3party.net/online/8732366.mp3",
+            audio: "https://mp3.chillhop.com/serve.php/?mp3=22790",
             color: ["#D75B35", "#1D3951"],
             id: uuidv4(),
             active: true,

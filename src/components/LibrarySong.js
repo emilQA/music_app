@@ -9,6 +9,16 @@ const LibrarySong = (props) => {
         //OR
 
         props.setCurrentSong(props.song)
+        props.audioRef.current.play()
+
+        if (props.isPlaying) {
+            const playPromise = props.audioRef.current.play();
+            if (playPromise !== undefined){
+                    playPromise.then((audio)=>{
+                            props.audioRef.current.play();
+                    })
+            }
+        }
     }
     return (
         <div onClick={songSelectHandler} className='library-song'>
@@ -20,8 +30,6 @@ const LibrarySong = (props) => {
 
         </div>
     )
-
-
 }
 
 export default LibrarySong;
