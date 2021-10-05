@@ -1,33 +1,39 @@
-import React from "react";
+import React from 'react';
 
-const LibrarySong = (props) => {
-    // console.log(props)
+const LibrarySong = ({song, setSongs ,songs, setCurrentSong, id, audioRef, isPlaying}) => {
     const songSelectHandler = () => {
-        // const selectedSong = props.songs.filter((state) => state.id === props.id)
-        // props.setCurrentSong(song)
-
-        //OR
-
-        props.setCurrentSong(props.song)
-        props.audioRef.current.play()
-
-        if (props.isPlaying) {
-            const playPromise = props.audioRef.current.play();
-            if (playPromise !== undefined){
-                    playPromise.then((audio)=>{
-                            props.audioRef.current.play();
-                    })
+        const selectedSong = songs.filter((state) => state.id === id);
+        setCurrentSong(selectedSong[0])
+        // Add active state
+        const newSong = songs.map((song) => {
+            if (song.id === id) {
+                return {
+                    ...song,
+                    active: true,
+                }
+            } else {
+                return {
+                    ...song,
+                    active: false,
+                }
+            }
+        })
+        setSongs(newSong)
+        //check if the song is playing
+        if (isPlaying) {
+            const playPromise = audioRef.current.play()
+            if (playPromise !== undefined) {
+                playPromise.then((audio) => audioRef.current.play())
             }
         }
     }
     return (
-        <div onClick={songSelectHandler} className='library-song'>
-            <img src={props.song.cover} alt={props.song.name}/>
+        <div onClick={songSelectHandler} className={`library-song ${song.active ? 'selected' : ''}`}>
+            <img src={song.cover} alt={song.cover}></img>
             <div className="library-song-description">
-                <h3>{props.song.name}</h3>
-                <h4>{props.song.artist}</h4>
+                <h3>{song.name}</h3>
+                <h4>{song.artist}</h4>
             </div>
-
         </div>
     )
 }
